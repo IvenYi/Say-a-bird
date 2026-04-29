@@ -20,6 +20,8 @@
     "ignore": [],
     "include": []
   },
+  "cloudfunctionRoot": "cloudfunctions/",
   "appid": "wx32e049c9594b4acf",
+  "projectname": "说个鸟",
   "editorSetting": {}
 }

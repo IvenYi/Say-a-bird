@@ -1,0 +1,11 @@
+<view class="container">
+  <view class="title">说只鸟</view>
+  <view class="subtitle">说出你的心情，让它变成一只鸟</view>
+  
+  <button class="btn" bindtap="testCloudFunction">测试云函数</button>
+  
+  <view class="result" wx:if="{{result}}">
+    <text>云函数返回结果：</text>
+    <text>{{JSON.stringify(result, null, 2)}}</text>
+  </view>
+</view>
