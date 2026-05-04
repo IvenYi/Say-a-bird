@@ -1,0 +1,65 @@
+<!-- pages/diary/diary.wxml -->
+<view class="diary-container" wx:if="{{diary}}">
+
+  <!-- 鸟类展示区 -->
+  <view class="bird-section">
+    <image
+      class="bird-image"
+      src="{{diary.birdImageUrl || '/assets/images/birds/placeholder.png'}}"
+      mode="aspectFit"
+    ></image>
+
+    <view class="bird-info">
+      <text class="bird-name">{{birdInfo.name}}</text>
+      <text class="bird-emotion">{{diary.emotionType}} · 强度 {{diary.intensity}}/5</text>
+      <text class="bird-knowledge">💡 {{birdInfo.knowledge}}</text>
+    </view>
+  </view>
+
+  <!-- 日记内容区 -->
+  <view class="diary-section">
+    <view class="diary-header">
+      <text class="diary-time">{{formatTime(diary.createTime)}}</text>
+      <view class="diary-tags">
+        <text
+          wx:for="{{diary.keywords}}"
+          wx:key="index"
+          class="tag-item"
+        >#{{item}}</text>
+      </view>
+    </view>
+
+    <view class="diary-content">
+      <text class="content-text">{{diary.content || '一次无言的放空'}}</text>
+    </view>
+  </view>
+
+  <!-- 元数据区 -->
+  <view class="meta-section">
+    <view class="meta-item">
+      <text class="meta-label">姿势</text>
+      <text class="meta-value">{{diary.posture}}</text>
+    </view>
+    <view class="meta-item">
+      <text class="meta-label">生态位</text>
+      <text class="meta-value">{{diary.ecologyLayer}}</text>
+    </view>
+    <view class="meta-item" wx:if="{{diary.isGuardian}}">
+      <text class="meta-label">守护鸟</text>
+      <text class="meta-value guardian">⭐</text>
+    </view>
+  </view>
+
+  <!-- 底部操作按钮 -->
+  <view class="bottom-actions">
+    <button class="delete-btn" bindtap="deleteDiary">
+      <image class="btn-icon" src="/assets/icons/delete.png"></image>
+      <text class="btn-text">删除日记</text>
+    </button>
+  </view>
+</view>
+
+<!-- 加载状态 -->
+<view class="loading-state" wx:if="{{!diary}}">
+  <text class="loading-text">加载中...</text>
+</view>

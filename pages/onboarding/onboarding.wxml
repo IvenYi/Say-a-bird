@@ -1,0 +1,85 @@
+<!-- pages/onboarding/onboarding.wxml -->
+<view class="onboarding-container">
+
+  <!-- 步骤1: 欢迎页 -->
+  <view wx:if="{{step === 1}}" class="welcome-page {{showAnimation ? 'fade-in' : ''}}">
+    <view class="welcome-content">
+      <image class="welcome-image" src="/assets/images/welcome-bird.png" mode="aspectFit"></image>
+      <text class="welcome-title">说出你的心情</text>
+      <text class="welcome-subtitle">让它变成一只鸟</text>
+      <text class="welcome-desc">记录情绪，收集15种本土鸟类</text>
+    </view>
+
+    <view class="welcome-actions">
+      <button class="btn-primary" bindtap="startFirstRecord">开始体验</button>
+      <text class="skip-text" bindtap="skipOnboarding">跳过引导</text>
+    </view>
+  </view>
+
+  <!-- 步骤2: 首次输入引导 -->
+  <view wx:if="{{step === 2}}" class="input-guide-page">
+    <view class="guide-header">
+      <text class="guide-title">今天过得怎么样？</text>
+      <text class="guide-subtitle">随便说说吧</text>
+    </view>
+
+    <view class="input-area">
+      <textarea
+        class="input-textarea"
+        placeholder="说点什么，或者长按1秒放空..."
+        placeholder-class="input-placeholder"
+        maxlength="500"
+        auto-focus
+        bindconfirm="handleFirstInput"
+      ></textarea>
+    </view>
+
+    <view class="input-tips">
+      <text class="tip-item">💬 可以打字或语音</text>
+      <text class="tip-item">🤫 长按1秒直接放空</text>
+    </view>
+
+    <button class="btn-primary" bindtap="handleFirstInput">生成我的第一只鸟</button>
+  </view>
+
+  <!-- 步骤3: 鸟类生成展示 -->
+  <view wx:if="{{step === 3}}" class="bird-generate-page {{showAnimation ? 'fade-in' : ''}}">
+    <view class="bird-display">
+      <image class="bird-image fly-in" src="/assets/images/birds/placeholder.png" mode="aspectFit"></image>
+      <text class="bird-name">{{firstBird.emotion_type}}</text>
+      <text class="bird-desc">这是你的第一只鸟</text>
+    </view>
+
+    <view class="bird-info">
+      <text class="info-text">它代表你此刻的情绪</text>
+      <text class="info-text">每次记录都会生成一只新的鸟</text>
+    </view>
+
+    <button class="btn-primary" bindtap="showGalleryIntro">继续</button>
+  </view>
+
+  <!-- 步骤4: 图鉴收集介绍 -->
+  <view wx:if="{{step === 4}}" class="gallery-intro-page">
+    <view class="intro-content">
+      <image class="intro-image" src="/assets/images/gallery-intro.png" mode="aspectFit"></image>
+      <text class="intro-title">收集你的情绪图鉴</text>
+      <text class="intro-desc">15种本土鸟类等你解锁</text>
+      <text class="intro-desc">每只鸟都有独特的故事</text>
+    </view>
+
+    <view class="progress-preview">
+      <text class="progress-text">已解锁 1/15</text>
+      <progress percent="6.67" stroke-width="8" activeColor="#4CAF50" backgroundColor="#E0E0E0"></progress>
+    </view>
+
+    <button class="btn-primary" bindtap="finishOnboarding">开始我的情绪天空</button>
+  </view>
+
+  <!-- 进度指示器 -->
+  <view class="step-indicator">
+    <view class="step-dot {{step >= 1 ? 'active' : ''}}"></view>
+    <view class="step-dot {{step >= 2 ? 'active' : ''}}"></view>
+    <view class="step-dot {{step >= 3 ? 'active' : ''}}"></view>
+    <view class="step-dot {{step >= 4 ? 'active' : ''}}"></view>
+  </view>
+</view>

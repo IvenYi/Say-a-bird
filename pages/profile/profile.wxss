@@ -1,0 +1,150 @@
+/* pages/profile/profile.wxss */
+.profile-container {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #E3F2FD 0%, #BBDEFB 100%);
+  padding: 40rpx;
+  box-sizing: border-box;
+}
+
+/* 用户信息区 */
+.user-section {
+  background: white;
+  border-radius: 24rpx;
+  padding: 50rpx;
+  margin-bottom: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20rpx;
+}
+
+.user-avatar {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 75rpx;
+  border: 4rpx solid #E3F2FD;
+}
+
+.user-name {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #424242;
+}
+
+.login-btn {
+  width: 200rpx;
+  height: 70rpx;
+  background: linear-gradient(135deg, #42A5F5 0%, #1976D2 100%);
+  color: white;
+  font-size: 28rpx;
+  font-weight: bold;
+  border-radius: 35rpx;
+  border: none;
+  box-shadow: 0 4rpx 12rpx rgba(25, 118, 210, 0.3);
+}
+
+.login-btn::after {
+  border: none;
+}
+
+/* 统计数据区 */
+.stats-section {
+  background: white;
+  border-radius: 24rpx;
+  padding: 40rpx;
+  margin-bottom: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10rpx;
+}
+
+.stat-number {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #1976D2;
+}
+
+.stat-label {
+  font-size: 24rpx;
+  color: #757575;
+}
+
+.stat-divider {
+  width: 2rpx;
+  height: 60rpx;
+  background: #E0E0E0;
+}
+
+/* 功能列表 */
+.menu-section {
+  background: white;
+  border-radius: 24rpx;
+  padding: 20rpx 0;
+  margin-bottom: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30rpx 40rpx;
+  border-bottom: 1rpx solid #F5F5F5;
+  transition: background 0.3s ease;
+}
+
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+.menu-item:active {
+  background: #F5F5F5;
+}
+
+.menu-left {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+}
+
+.menu-icon {
+  width: 48rpx;
+  height: 48rpx;
+}
+
+.menu-text {
+  font-size: 28rpx;
+  color: #424242;
+}
+
+.menu-arrow {
+  width: 32rpx;
+  height: 32rpx;
+  opacity: 0.3;
+}
+
+/* 版本信息 */
+.version-section {
+  text-align: center;
+  padding: 40rpx 0;
+}
+
+.version-text {
+  font-size: 24rpx;
+  color: #9E9E9E;
+}

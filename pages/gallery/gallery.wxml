@@ -1,0 +1,86 @@
+<!-- pages/gallery/gallery.wxml -->
+<view class="gallery-container">
+  <view class="noise-overlay"></view>
+  <view class="status-bar-placeholder"></view>
+
+  <!-- 顶部进度区 -->
+  <view class="progress-section">
+    <text class="progress-title">收集进度</text>
+    <view class="progress-display">
+      <text class="progress-number">{{unlockedCount}}/{{totalCount}}</text>
+      <progress
+        percent="{{unlockedCount / totalCount * 100}}"
+        stroke-width="12"
+        activeColor="#4CAF50"
+        backgroundColor="#E0E0E0"
+      ></progress>
+    </view>
+    <text class="progress-tip">继续记录情绪，解锁更多鸟类</text>
+  </view>
+
+  <!-- 已解锁鸟类 -->
+  <view class="section-header">
+    <text class="section-title">已解锁 ({{unlockedCount}})</text>
+  </view>
+
+  <view class="birds-grid">
+    <view
+      wx:for="{{unlockedBirds}}"
+      wx:key="name"
+      class="bird-card unlocked"
+      bindtap="viewBirdDetail"
+      data-bird="{{item}}"
+    >
+      <image
+        class="bird-card-image"
+        src="/assets/images/birds/{{item.name}}.png"
+        mode="aspectFit"
+      ></image>
+      <view class="bird-card-info">
+        <text class="bird-card-name">{{item.name}}</text>
+        <text class="bird-card-emotion">{{item.emotion}}</text>
+        <text class="bird-card-knowledge">{{item.knowledge}}</text>
+        <text class="bird-card-count">出现 {{item.unlockCount}} 次</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 未解锁鸟类 -->
+  <view class="section-header" wx:if="{{lockedBirds.length > 0}}">
+    <text class="section-title">未解锁 ({{lockedBirds.length}})</text>
+  </view>
+
+  <view class="birds-grid" wx:if="{{lockedBirds.length > 0}}">
+    <view
+      wx:for="{{lockedBirds}}"
+      wx:key="name"
+      class="bird-card locked"
+      bindtap="viewBirdDetail"
+      data-bird="{{item}}"
+    >
+      <view class="bird-card-silhouette">
+        <text class="lock-icon">🔒</text>
+      </view>
+      <view class="bird-card-info">
+        <text class="bird-card-name locked-name">???</text>
+        <text class="bird-card-hint">记录更多情绪，它就会出现</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{unlockedCount === 0}}">
+    <image class="empty-image" src="/assets/images/empty-gallery.png" mode="aspectFit"></image>
+    <text class="empty-text">还没有解锁任何鸟类</text>
+    <button class="empty-btn" bindtap="goToInput">去记录情绪</button>
+  </view>
+
+  <!-- 全部解锁提示 -->
+  <view class="complete-state" wx:if="{{unlockedCount === totalCount}}">
+    <view class="complete-card">
+      <text class="complete-icon">🎉</text>
+      <text class="complete-title">恭喜你！</text>
+      <text class="complete-desc">已解锁全部15种鸟类</text>
+    </view>
+  </view>
+</view>

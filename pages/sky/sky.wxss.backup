@@ -1,0 +1,265 @@
+/* pages/sky/sky.wxss */
+.sky-container {
+  width: 100%;
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  transition: background-image 0.5s ease;
+}
+
+/* 顶部进度条 */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 20rpx 30rpx;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10rpx);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+
+.progress-content {
+  flex: 1;
+  margin-right: 20rpx;
+}
+
+.progress-text {
+  font-size: 24rpx;
+  color: #424242;
+  display: block;
+  margin-bottom: 10rpx;
+}
+
+.icon-gallery {
+  font-size: 50rpx;
+  line-height: 50rpx;
+}
+
+/* 天空画布 */
+.sky-canvas-wrapper {
+  width: 100%;
+  min-height: calc(100vh - 200rpx);
+  padding-top: 100rpx;
+  position: relative;
+}
+
+.ecology-base {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 15%;
+  z-index: 1;
+}
+
+/* 鸟类容器 */
+.birds-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  min-height: 800rpx;
+}
+
+.bird-item {
+  position: absolute;
+  width: 120rpx;
+  height: 120rpx;
+  animation: birdFloat 3s ease-in-out infinite;
+}
+
+.bird-emoji {
+  font-size: 80rpx;
+  line-height: 120rpx;
+}
+
+.bird-image {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 4rpx 8rpx rgba(0, 0, 0, 0.15));
+}
+
+.unlock-badge {
+  position: absolute;
+  top: -10rpx;
+  right: -10rpx;
+  background: #FF5722;
+  color: white;
+  font-size: 20rpx;
+  padding: 4rpx 12rpx;
+  border-radius: 20rpx;
+  font-weight: bold;
+  box-shadow: 0 2rpx 8rpx rgba(255, 87, 34, 0.4);
+}
+
+/* 空状态 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 200rpx 0;
+}
+
+.empty-icon {
+  font-size: 120rpx;
+  margin-bottom: 40rpx;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: #9E9E9E;
+  margin-bottom: 40rpx;
+}
+
+.empty-btn {
+  width: 300rpx;
+  height: 80rpx;
+  background: linear-gradient(135deg, #42A5F5 0%, #1976D2 100%);
+  color: white;
+  font-size: 28rpx;
+  font-weight: bold;
+  border-radius: 40rpx;
+  border: none;
+  box-shadow: 0 8rpx 16rpx rgba(25, 118, 210, 0.3);
+}
+
+.empty-btn::after {
+  border: none;
+}
+
+/* 视图切换 */
+.view-switch {
+  position: fixed;
+  top: 100rpx;
+  right: 30rpx;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10rpx);
+  padding: 10rpx 20rpx;
+  border-radius: 30rpx;
+  display: flex;
+  align-items: center;
+  gap: 15rpx;
+  z-index: 99;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+
+.switch-btn {
+  font-size: 24rpx;
+  color: #757575;
+  transition: all 0.3s ease;
+}
+
+.switch-btn.active {
+  color: #1976D2;
+  font-weight: bold;
+}
+
+.switch-divider {
+  font-size: 24rpx;
+  color: #E0E0E0;
+}
+
+/* 底部操作栏 */
+.bottom-actions {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 140rpx;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20rpx);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 20rpx 40rpx;
+  box-shadow: 0 -4rpx 12rpx rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.action-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8rpx;
+}
+
+.action-icon {
+  font-size: 48rpx;
+  line-height: 48rpx;
+}
+
+.action-text {
+  font-size: 22rpx;
+  color: #757575;
+}
+
+/* 主按钮 */
+.main-action-btn {
+  width: 120rpx;
+  height: 120rpx;
+  background: linear-gradient(135deg, #42A5F5 0%, #1976D2 100%);
+  border-radius: 60rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8rpx;
+  box-shadow: 0 8rpx 20rpx rgba(25, 118, 210, 0.4);
+  position: relative;
+  top: -30rpx;
+}
+
+.main-icon {
+  font-size: 56rpx;
+  line-height: 56rpx;
+}
+
+.main-text {
+  font-size: 24rpx;
+  color: white;
+  font-weight: bold;
+}
+
+/* 长按提示 */
+.long-press-hint {
+  position: fixed;
+  bottom: 160rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 12rpx 24rpx;
+  border-radius: 30rpx;
+  z-index: 99;
+  animation: hintFade 3s ease-in-out infinite;
+}
+
+.hint-text {
+  font-size: 22rpx;
+}
+
+/* 动画 */
+@keyframes birdFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10rpx);
+  }
+}
+
+@keyframes hintFade {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}

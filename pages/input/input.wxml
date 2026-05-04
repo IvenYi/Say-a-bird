@@ -1,0 +1,73 @@
+<!-- pages/input/input.wxml -->
+<view class="input-container">
+  <view class="noise-overlay"></view>
+  <view class="status-bar-placeholder"></view>
+
+  <!-- 顶部引导文案 -->
+  <view class="input-header">
+    <text class="header-title">今天过得怎么样？</text>
+    <text class="header-subtitle">随便说说吧</text>
+  </view>
+
+  <!-- 输入区域 -->
+  <view class="input-area">
+    <textarea
+      class="input-textarea"
+      placeholder="说点什么，或者长按下方按钮1秒放空..."
+      placeholder-class="input-placeholder"
+      value="{{content}}"
+      bindinput="onInput"
+      maxlength="500"
+      auto-focus
+      show-confirm-bar="{{false}}"
+    ></textarea>
+
+    <view class="char-count">
+      <text class="count-text">{{content.length}}/500</text>
+    </view>
+  </view>
+
+  <!-- 语音输入按钮 -->
+  <view class="voice-input-section">
+    <button
+      class="voice-btn {{isRecording ? 'recording' : ''}}"
+      bindtouchstart="startVoiceInput"
+      bindtouchend="stopVoiceInput"
+    >
+      <image class="voice-icon" src="/assets/icons/microphone.png"></image>
+      <text class="voice-text">{{isRecording ? '松开结束' : '按住说话'}}</text>
+    </button>
+  </view>
+
+  <!-- 长按放空提示 -->
+  <view class="long-press-section" wx:if="{{showLongPressHint}}">
+    <view class="hint-card">
+      <text class="hint-icon">🤫</text>
+      <text class="hint-text">什么都不想说？长按下方按钮1秒直接放空</text>
+    </view>
+  </view>
+
+  <!-- 底部操作按钮 -->
+  <view class="bottom-actions">
+    <!-- 一键放空按钮（长按触发） -->
+    <button
+      class="empty-btn"
+      bindtouchstart="onLongPressStart"
+      bindtouchend="onLongPressEnd"
+      bindtouchcancel="onLongPressEnd"
+    >
+      <text class="empty-text">长按1秒放空</text>
+    </button>
+
+    <!-- 提交按钮 -->
+    <button class="submit-btn" bindtap="submitEmotion">
+      <text class="submit-text">生成我的鸟</text>
+    </button>
+  </view>
+
+  <!-- 温馨提示 -->
+  <view class="tips-section">
+    <text class="tip-item">💡 你的日记只有你能看到</text>
+    <text class="tip-item">🔒 所有内容都经过加密存储</text>
+  </view>
+</view>

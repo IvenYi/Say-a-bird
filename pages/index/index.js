@@ -10,7 +10,7 @@ Page({
       const res = await wx.cloud.callFunction({
         name: 'analyzeEmotion',
         data: {
-          content: '今天上班摸鱼了一天，太爽了'
+          content: '老板真的恶心，所有事情都拍脑袋决定，操了真的'
         }
       })
       console.log('云函数返回：', res.result)

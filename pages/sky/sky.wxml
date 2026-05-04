@@ -1,0 +1,169 @@
+<!-- pages/sky/sky.wxml -->
+<view class="sky-container sky-{{currentTime}}">
+  <!-- 噪点质感层 -->
+  <view class="noise-overlay"></view>
+
+  <!-- 顶部状态栏占位（沉浸式处理） -->
+  <view class="status-bar-placeholder"></view>
+
+  <!-- 天空画布区域：2D无限滚动长卷 -->
+  <scroll-view 
+    class="sky-canvas-wrapper" 
+    scroll-x 
+    scroll-y 
+    scroll-into-view="{{targetView}}"
+    scroll-with-animation 
+    enhanced 
+    show-scrollbar="{{false}}"
+  >
+    <view class="infinite-canvas">
+      <!-- 三栖生态基底 (纯 CSS 几何拼贴) -->
+      <view class="eco-base" id="zone-water">
+        <!-- 远景：山丘起伏 -->
+        <view class="eco-hill eco-hill-left"></view>
+        <view class="eco-hill eco-hill-right"></view>
+        
+        <!-- 中景：左侧几何森林 -->
+        <view class="eco-forest" id="zone-forest">
+          <!-- 树木将采用 Snipaste 图中的层叠几何风格 -->
+          <view class="tree-pine tree-1">
+            <view class="pine-layer"></view>
+            <view class="pine-layer"></view>
+            <view class="pine-layer"></view>
+          </view>
+          <view class="tree-round tree-2">
+            <view class="round-layer"></view>
+            <view class="round-layer"></view>
+            <view class="round-layer"></view>
+          </view>
+          <view class="tree-pine tree-3">
+            <view class="pine-layer"></view>
+            <view class="pine-layer"></view>
+            <view class="pine-layer"></view>
+          </view>
+        </view>
+
+        <!-- 前景：蜿蜒水域与错落滩涂 -->
+        <view class="eco-winding-river">
+          <view class="mudflat-curve mudflat-1"></view>
+          <view class="mudflat-curve mudflat-2"></view>
+          <view class="mudflat-curve mudflat-3" id="zone-mudflat"></view>
+          <view class="water-curve water-1"></view>
+          <view class="water-curve water-2"></view>
+        </view>
+      </view>
+
+      <!-- 高空锚点 -->
+      <view id="zone-sky" style="position: absolute; top: 20vh; left: 150vw;"></view>
+
+      <!-- 鸟类展示区 -->
+      <view class="birds-container">
+        <view
+          wx:for="{{birds}}"
+          wx:key="_id"
+          id="bird-{{item._id}}"
+          class="bird-item"
+          bindtap="onBirdTap"
+          data-id="{{item._id}}"
+          style="left: {{item.x}}vw; top: {{item.y}}vh;"
+        >
+          <text class="bird-emoji">🐦</text>
+          <!-- 解锁角标 -->
+          <view wx:if="{{item.isFirstUnlock}}" class="unlock-dot"></view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 固定前景画框 (Camera Lens Framing) -->
+  <view class="framing-layer">
+    <view class="framing-leaf framing-left"></view>
+    <view class="framing-leaf framing-right"></view>
+  </view>
+
+  <!-- 神明光 (Crepuscular Rays) -->
+  <view class="god-rays-layer" wx:if="{{currentTime !== 'night'}}">
+    <view class="ray ray-1"></view>
+    <view class="ray ray-2"></view>
+  </view>
+
+  <!-- 悬浮固定 UI 层 -->
+  
+  <!-- 文字输入遮罩层 (Glassmorphism) -->
+  <view class="text-input-overlay" wx:if="{{isTyping}}" animation="{{fadeInAnimation}}">
+    <view class="input-header">
+      <text class="cancel-text" bindtap="closeTextInput">取消</text>
+      <button class="send-btn" bindtap="submitTextEmotion" disabled="{{!textContent}}">发送</button>
+    </view>
+    <textarea
+      class="zen-textarea"
+      placeholder="写下此刻的思绪..."
+      placeholder-class="zen-placeholder"
+      value="{{textContent}}"
+      bindinput="onTextInput"
+      auto-focus
+      maxlength="500"
+      show-confirm-bar="{{false}}"
+      cursor-spacing="100"
+    ></textarea>
+  </view>
+
+  <!-- 录音声波遮罩层 -->
+  <view class="recording-overlay" wx:if="{{isRecording}}">
+    <text class="recording-title">“说吧，我在听...”</text>
+    <view class="sound-wave">
+      <view class="wave-bar"></view>
+      <view class="wave-bar"></view>
+      <view class="wave-bar"></view>
+      <view class="wave-bar"></view>
+      <view class="wave-bar"></view>
+    </view>
+    <text class="recording-hint">L I S T E N I N G</text>
+  </view>
+
+  <!-- 空状态提示：诗意化 -->
+  <view wx:if="{{birds.length === 0 && !isRecording && !isTyping}}" class="empty-state">
+    <text class="empty-quote">“滑向未知的边界”</text>
+    <text class="empty-hint">点击下方，在这片无垠中留下痕迹</text>
+  </view>
+
+
+  <!-- 视图切换：极其隐蔽的角落 -->
+  <view class="view-switch-zen" bindtap="switchViewMode">
+    <text class="switch-dot {{viewMode === 'recent' ? 'active' : ''}}"></text>
+    <text class="switch-label">{{viewMode === 'recent' ? '近 7 日' : '全月'}}</text>
+  </view>
+
+  <!-- 沉浸式导航组：完全去背景化 -->
+  <view class="zen-navigation">
+    <!-- 图鉴入口 -->
+    <view class="nav-icon-box" bindtap="goToGallery">
+      <text class="nav-icon">📖</text>
+    </view>
+
+    <!-- 核心交互区 -->
+    <view class="main-action-wrapper">
+      <!-- 隐藏的文字输入小入口 -->
+      <view class="sub-action-btn" bindtap="openTextInput" wx:if="{{!isRecording}}">
+        <text class="sub-action-icon">✍️</text>
+      </view>
+
+      <!-- 核心圆环 -->
+      <view class="zen-main-action {{isRecording ? 'recording' : ''}}" bindtap="toggleVoiceRecord" bindlongpress="onLongPressMain">
+        <view class="action-circle">
+          <text class="action-bird" wx:if="{{!isRecording}}">🐦</text>
+          <view class="stop-square" wx:else></view>
+        </view>
+        <text class="action-label">{{isRecording ? '点击结束' : '说只鸟'}}</text>
+      </view>
+
+      <!-- 长按放空提示 -->
+      <text class="long-press-hint" wx:if="{{!isRecording}}">长按 · 放空</text>
+    </view>
+
+    <!-- 个人入口 -->
+    <view class="nav-icon-box" bindtap="goToProfile">
+      <text class="nav-icon">👤</text>
+    </view>
+  </view>
+</view>

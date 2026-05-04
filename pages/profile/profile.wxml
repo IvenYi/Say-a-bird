@@ -1,0 +1,76 @@
+<!-- pages/profile/profile.wxml -->
+<view class="profile-container">
+  <view class="noise-overlay"></view>
+  <view class="status-bar-placeholder"></view>
+
+  <!-- 用户信息区 -->
+  <view class="user-section">
+    <view class="user-info" wx:if="{{userInfo}}">
+      <image class="user-avatar" src="{{userInfo.avatarUrl}}" mode="aspectFill"></image>
+      <text class="user-name">{{userInfo.nickName}}</text>
+    </view>
+
+    <view class="user-info" wx:else>
+      <image class="user-avatar" src="/assets/images/default-avatar.png" mode="aspectFill"></image>
+      <button class="login-btn" bindtap="getUserProfile">点击登录</button>
+    </view>
+  </view>
+
+  <!-- 统计数据区 -->
+  <view class="stats-section">
+    <view class="stat-item">
+      <text class="stat-number">{{stats.totalDiaries}}</text>
+      <text class="stat-label">记录次数</text>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item">
+      <text class="stat-number">{{stats.unlockedBirds}}</text>
+      <text class="stat-label">解锁鸟类</text>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item">
+      <text class="stat-number">{{stats.currentStreak}}</text>
+      <text class="stat-label">连续天数</text>
+    </view>
+  </view>
+
+  <!-- 功能列表 -->
+  <view class="menu-section">
+    <view class="menu-item" bindtap="viewGuide">
+      <view class="menu-left">
+        <image class="menu-icon" src="/assets/icons/guide.png"></image>
+        <text class="menu-text">使用指南</text>
+      </view>
+      <image class="menu-arrow" src="/assets/icons/arrow-right.png"></image>
+    </view>
+
+    <view class="menu-item" bindtap="aboutUs">
+      <view class="menu-left">
+        <image class="menu-icon" src="/assets/icons/about.png"></image>
+        <text class="menu-text">关于我们</text>
+      </view>
+      <image class="menu-arrow" src="/assets/icons/arrow-right.png"></image>
+    </view>
+
+    <view class="menu-item" bindtap="contactService">
+      <view class="menu-left">
+        <image class="menu-icon" src="/assets/icons/service.png"></image>
+        <text class="menu-text">联系客服</text>
+      </view>
+      <image class="menu-arrow" src="/assets/icons/arrow-right.png"></image>
+    </view>
+
+    <view class="menu-item" bindtap="clearCache">
+      <view class="menu-left">
+        <image class="menu-icon" src="/assets/icons/clear.png"></image>
+        <text class="menu-text">清除缓存</text>
+      </view>
+      <image class="menu-arrow" src="/assets/icons/arrow-right.png"></image>
+    </view>
+  </view>
+
+  <!-- 版本信息 -->
+  <view class="version-section">
+    <text class="version-text">说只鸟 MVP v1.0</text>
+  </view>
+</view>

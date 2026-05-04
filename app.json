@@ -1,12 +1,19 @@
 {
   "pages": [
+    "pages/sky/sky",
+    "pages/onboarding/onboarding",
+    "pages/input/input",
+    "pages/diary/diary",
+    "pages/gallery/gallery",
+    "pages/profile/profile",
     "pages/index/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "说个鸟",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor": "#E3F2FD",
+    "navigationBarTitleText": "说只鸟",
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"

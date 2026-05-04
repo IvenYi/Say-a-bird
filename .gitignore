@@ -1,5 +1,6 @@
 node_modules/
 dist/
+问题/
 project.private.config.json
 .DS_Store
 *.log
