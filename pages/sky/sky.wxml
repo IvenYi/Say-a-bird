@@ -93,7 +93,7 @@
   <view class="text-input-overlay" wx:if="{{isTyping}}" animation="{{fadeInAnimation}}">
     <view class="input-header">
       <text class="cancel-text" bindtap="closeTextInput">取消</text>
-      <button class="send-btn" bindtap="submitTextEmotion" disabled="{{!textContent}}">发送</button>
+      <button class="btn-zen send-btn" bindtap="submitTextEmotion" disabled="{{!textContent}}">发送</button>
     </view>
     <textarea
       class="zen-textarea"

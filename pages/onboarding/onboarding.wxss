@@ -2,13 +2,13 @@
 .onboarding-container {
   width: 100%;
   min-height: 100vh;
-  background: linear-gradient(180deg, #E3F2FD 0%, #BBDEFB 100%);
+  background: linear-gradient(to bottom, var(--bg-sky-dawn-1), var(--bg-sky-dawn-2));
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 40rpx;
-  box-sizing: border-box;
+  padding: 60rpx 40rpx;
+  position: relative;
 }
 
 /* 欢迎页 */
@@ -19,11 +19,6 @@
   align-items: center;
   justify-content: space-between;
   min-height: 80vh;
-  opacity: 0;
-}
-
-.welcome-page.fade-in {
-  animation: fadeIn 0.8s ease-in forwards;
 }
 
 .welcome-content {
@@ -31,30 +26,35 @@
   flex-direction: column;
   align-items: center;
   margin-top: 120rpx;
+  text-align: center;
 }
 
 .welcome-image {
-  width: 300rpx;
-  height: 300rpx;
-  margin-bottom: 60rpx;
+  width: 320rpx;
+  height: 320rpx;
+  margin-bottom: 80rpx;
+  filter: drop-shadow(0 20rpx 40rpx rgba(0,0,0,0.05));
 }
 
 .welcome-title {
-  font-size: 48rpx;
-  font-weight: bold;
-  color: #1976D2;
-  margin-bottom: 20rpx;
+  font-size: 52rpx;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 24rpx;
+  letter-spacing: 4rpx;
 }
 
 .welcome-subtitle {
   font-size: 36rpx;
-  color: #424242;
-  margin-bottom: 40rpx;
+  color: var(--text-secondary);
+  margin-bottom: 48rpx;
+  font-weight: 300;
 }
 
 .welcome-desc {
   font-size: 28rpx;
-  color: #757575;
+  color: var(--text-secondary);
+  opacity: 0.8;
 }
 
 .welcome-actions {
@@ -62,13 +62,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30rpx;
+  gap: 40rpx;
 }
 
 .skip-text {
   font-size: 28rpx;
-  color: #9E9E9E;
-  text-decoration: underline;
+  color: var(--text-secondary);
+  opacity: 0.6;
 }
 
 /* 输入引导页 */
@@ -76,58 +76,54 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .guide-header {
-  text-align: center;
-  margin-bottom: 60rpx;
+  margin-bottom: 80rpx;
 }
 
 .guide-title {
-  font-size: 40rpx;
-  font-weight: bold;
-  color: #1976D2;
+  font-size: 48rpx;
+  font-weight: 600;
+  color: var(--text-main);
   display: block;
   margin-bottom: 20rpx;
 }
 
 .guide-subtitle {
-  font-size: 28rpx;
-  color: #757575;
+  font-size: 30rpx;
+  color: var(--text-secondary);
   display: block;
 }
 
 .input-area {
   width: 100%;
-  margin-bottom: 40rpx;
+  margin-bottom: 60rpx;
 }
 
 .input-textarea {
   width: 100%;
-  min-height: 300rpx;
-  padding: 30rpx;
-  background: white;
-  border-radius: 20rpx;
-  font-size: 32rpx;
-  line-height: 1.6;
-  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
-}
-
-.input-placeholder {
-  color: #BDBDBD;
+  min-height: 360rpx;
+  padding: 40rpx;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  border-radius: var(--radius-zen);
+  font-size: 34rpx;
+  line-height: 1.7;
+  box-shadow: var(--shadow-elevated);
 }
 
 .input-tips {
   display: flex;
   flex-direction: column;
-  gap: 20rpx;
-  margin-bottom: 60rpx;
+  gap: 24rpx;
+  margin-bottom: 80rpx;
 }
 
 .tip-item {
-  font-size: 26rpx;
-  color: #757575;
+  font-size: 28rpx;
+  color: var(--text-secondary);
+  font-style: italic;
 }
 
 /* 鸟类生成页 */
@@ -136,11 +132,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  opacity: 0;
-}
-
-.bird-generate-page.fade-in {
-  animation: fadeIn 1s ease-in forwards;
 }
 
 .bird-display {
@@ -151,38 +142,35 @@
 }
 
 .bird-image {
-  width: 400rpx;
-  height: 400rpx;
+  width: 440rpx;
+  height: 440rpx;
   margin-bottom: 40rpx;
 }
 
-.bird-image.fly-in {
-  animation: flyIn 1.2s ease-out forwards;
-}
-
 .bird-name {
-  font-size: 40rpx;
-  font-weight: bold;
-  color: #1976D2;
-  margin-bottom: 20rpx;
+  font-size: 44rpx;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 24rpx;
 }
 
 .bird-desc {
-  font-size: 28rpx;
-  color: #757575;
+  font-size: 30rpx;
+  color: var(--text-secondary);
 }
 
 .bird-info {
   display: flex;
   flex-direction: column;
   gap: 20rpx;
-  margin-bottom: 60rpx;
+  margin-bottom: 80rpx;
   text-align: center;
 }
 
 .info-text {
-  font-size: 28rpx;
-  color: #616161;
+  font-size: 30rpx;
+  color: var(--text-secondary);
+  line-height: 1.6;
 }
 
 /* 图鉴介绍页 */
@@ -197,103 +185,74 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 60rpx;
+  margin-bottom: 80rpx;
 }
 
 .intro-image {
-  width: 350rpx;
-  height: 350rpx;
-  margin-bottom: 40rpx;
+  width: 380rpx;
+  height: 380rpx;
+  margin-bottom: 60rpx;
 }
 
 .intro-title {
-  font-size: 40rpx;
-  font-weight: bold;
-  color: #1976D2;
+  font-size: 44rpx;
+  font-weight: 600;
+  color: var(--text-main);
   margin-bottom: 30rpx;
 }
 
 .intro-desc {
-  font-size: 28rpx;
-  color: #757575;
-  margin-bottom: 10rpx;
+  font-size: 30rpx;
+  color: var(--text-secondary);
+  margin-bottom: 12rpx;
 }
 
 .progress-preview {
   width: 100%;
-  margin-bottom: 60rpx;
+  margin-bottom: 80rpx;
+  padding: 0 40rpx;
 }
 
 .progress-text {
-  font-size: 28rpx;
-  color: #424242;
+  font-size: 30rpx;
+  color: var(--text-main);
   display: block;
-  margin-bottom: 20rpx;
+  margin-bottom: 24rpx;
   text-align: center;
-}
-
-/* 通用按钮 */
-.btn-primary {
-  width: 100%;
-  height: 90rpx;
-  background: linear-gradient(135deg, #42A5F5 0%, #1976D2 100%);
-  color: white;
-  font-size: 32rpx;
-  font-weight: bold;
-  border-radius: 45rpx;
-  border: none;
-  box-shadow: 0 8rpx 16rpx rgba(25, 118, 210, 0.3);
-}
-
-.btn-primary::after {
-  border: none;
 }
 
 /* 进度指示器 */
 .step-indicator {
   position: fixed;
-  bottom: 60rpx;
+  bottom: 80rpx;
   display: flex;
   gap: 20rpx;
 }
 
 .step-dot {
-  width: 16rpx;
-  height: 16rpx;
+  width: 14rpx;
+  height: 14rpx;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.5);
-  transition: all 0.3s ease;
+  background: rgba(var(--color-warm-orange-rgb), 0.2);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .step-dot.active {
-  background: #1976D2;
-  width: 40rpx;
+  background: var(--color-warm-orange);
+  width: 48rpx;
   border-radius: 8rpx;
 }
 
-/* 动画 */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(30rpx);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* 动画重定义 */
+.fade-in { animation: zenFadeIn 1s ease-out forwards; }
+.fly-in { animation: birdFlyIn 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+
+@keyframes zenFadeIn {
+  from { opacity: 0; transform: translateY(30rpx); filter: blur(10px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
 }
 
-@keyframes flyIn {
-  0% {
-    opacity: 0;
-    transform: translateY(-100rpx) scale(0.5);
-  }
-  60% {
-    opacity: 1;
-    transform: translateY(20rpx) scale(1.1);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+@keyframes birdFlyIn {
+  0% { opacity: 0; transform: translateY(-80rpx) scale(0.8) rotate(-5deg); }
+  100% { opacity: 1; transform: translateY(0) scale(1) rotate(0); }
 }

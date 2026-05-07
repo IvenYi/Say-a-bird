@@ -11,7 +11,7 @@
     </view>
 
     <view class="welcome-actions">
-      <button class="btn-primary" bindtap="startFirstRecord">开始体验</button>
+      <button class="btn-zen" bindtap="startFirstRecord">开始体验</button>
       <text class="skip-text" bindtap="skipOnboarding">跳过引导</text>
     </view>
   </view>
@@ -39,7 +39,7 @@
       <text class="tip-item">🤫 长按1秒直接放空</text>
     </view>
 
-    <button class="btn-primary" bindtap="handleFirstInput">生成我的第一只鸟</button>
+    <button class="btn-zen" bindtap="handleFirstInput">生成我的第一只鸟</button>
   </view>
 
   <!-- 步骤3: 鸟类生成展示 -->
@@ -55,7 +55,7 @@
       <text class="info-text">每次记录都会生成一只新的鸟</text>
     </view>
 
-    <button class="btn-primary" bindtap="showGalleryIntro">继续</button>
+    <button class="btn-zen" bindtap="showGalleryIntro">继续</button>
   </view>
 
   <!-- 步骤4: 图鉴收集介绍 -->
@@ -72,7 +72,7 @@
       <progress percent="6.67" stroke-width="8" activeColor="#4CAF50" backgroundColor="#E0E0E0"></progress>
     </view>
 
-    <button class="btn-primary" bindtap="finishOnboarding">开始我的情绪天空</button>
+    <button class="btn-zen" bindtap="finishOnboarding">开始我的情绪天空</button>
   </view>
 
   <!-- 进度指示器 -->

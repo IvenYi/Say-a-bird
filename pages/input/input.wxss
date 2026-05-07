@@ -2,51 +2,38 @@
 .input-container {
   width: 100%;
   min-height: 100vh;
-  /* 使用温润的“纸张白”与天空色的过渡 */
   background: linear-gradient(to bottom, var(--bg-sky-day-1) 0%, var(--color-paper) 40%);
-  padding: 60rpx 40rpx;
+  padding: 80rpx 40rpx;
   display: flex;
   flex-direction: column;
 }
 
-/* 噪点层依然需要 */
-.noise-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 10;
-  pointer-events: none;
-  opacity: 0.03;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-}
-
-/* 顶部引导：非标准化排版 */
+/* 顶部引导 */
 .input-header {
-  text-align: left;
   margin-bottom: 80rpx;
-  padding-left: 10rpx;
 }
 
 .header-title {
-  font-size: 48rpx;
+  font-size: 52rpx;
   font-weight: 600;
-  color: var(--color-text-main);
+  color: var(--text-main);
   display: block;
   margin-bottom: 24rpx;
   letter-spacing: 2rpx;
 }
 
 .header-subtitle {
-  font-size: 26rpx;
-  color: var(--color-text-secondary);
+  font-size: 30rpx;
+  color: var(--text-secondary);
   display: block;
   font-style: italic;
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
-/* 输入区域：无边框“纸张”感 */
+/* 输入区域 */
 .input-area {
   width: 100%;
-  margin-bottom: 60rpx;
+  margin-bottom: 80rpx;
   position: relative;
 }
 
@@ -55,26 +42,26 @@
   min-height: 500rpx;
   padding: 0;
   background: transparent;
-  font-size: 34rpx;
-  line-height: 2;
-  color: var(--color-text-main);
+  font-size: 36rpx;
+  line-height: 1.8;
+  color: var(--text-main);
 }
 
 .input-placeholder {
-  color: var(--color-text-secondary);
+  color: var(--text-secondary);
   opacity: 0.4;
 }
 
-/* 装饰性分割线：色块风 */
+/* 装饰性色块线 */
 .input-area::after {
   content: "";
   position: absolute;
   bottom: -20rpx;
   left: 0;
-  width: 120rpx;
-  height: 8rpx;
-  background: var(--color-block-green);
-  border-radius: 4rpx;
+  width: 140rpx;
+  height: 10rpx;
+  background: var(--color-mint);
+  border-radius: 5rpx;
 }
 
 .char-count {
@@ -84,51 +71,41 @@
 }
 
 .count-text {
-  font-size: 20rpx;
-  color: var(--color-text-secondary);
-  letter-spacing: 2rpx;
+  font-size: 24rpx;
+  color: var(--text-secondary);
+  opacity: 0.6;
 }
 
-/* 语音输入：几何块风格 */
+/* 语音输入 */
 .voice-input-section {
   width: 100%;
-  margin-top: 100rpx;
+  margin-top: 60rpx;
   margin-bottom: 60rpx;
 }
 
 .voice-btn {
   width: 100%;
-  height: 110rpx;
+  height: 120rpx;
   background: white;
-  border-radius: var(--radius-geometric);
+  border-radius: var(--radius-zen);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20rpx;
-  box-shadow: var(--shadow-hard);
+  gap: 24rpx;
+  box-shadow: var(--shadow-soft);
   border: none;
-  transition: all 0.1s ease;
-}
-
-.voice-btn::after {
-  border: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .voice-btn.recording {
-  background: var(--color-block-orange);
-  transform: translateY(6rpx);
-  box-shadow: var(--shadow-hard-active);
-}
-
-.voice-icon {
-  width: 44rpx;
-  height: 44rpx;
-  opacity: 0.6;
+  background: var(--color-warm-orange);
+  transform: scale(0.98);
+  box-shadow: 0 8rpx 16rpx rgba(var(--color-warm-orange-rgb), 0.2);
 }
 
 .voice-text {
-  font-size: 28rpx;
-  color: var(--color-text-main);
+  font-size: 30rpx;
+  color: var(--text-main);
   font-weight: 500;
 }
 
@@ -136,7 +113,7 @@
   color: white;
 }
 
-/* 底部操作按钮：硬阴影色块 */
+/* 底部操作按钮 */
 .bottom-actions {
   width: 100%;
   display: flex;
@@ -148,62 +125,54 @@
   flex: 1;
   height: 100rpx;
   background: white;
-  border: 4rpx solid var(--color-block-green);
-  border-radius: var(--radius-geometric);
+  border-radius: var(--radius-zen);
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.empty-btn::after {
-  border: none;
+  box-shadow: var(--shadow-soft);
 }
 
 .empty-text {
-  font-size: 26rpx;
-  color: var(--color-block-green-dark);
-  font-weight: bold;
+  font-size: 28rpx;
+  color: var(--color-mint-dark);
+  font-weight: 600;
 }
 
 .submit-btn {
   flex: 1.5;
   height: 100rpx;
-  background: var(--color-block-orange);
-  border-radius: var(--radius-geometric);
+  background: var(--color-warm-orange);
+  border-radius: var(--radius-pill);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8rpx 0 var(--color-block-orange-dark);
-  transition: all 0.1s ease;
-}
-
-.submit-btn::after {
-  border: none;
+  box-shadow: var(--shadow-accent);
+  transition: all 0.3s ease;
 }
 
 .submit-btn:active {
-  transform: translateY(6rpx);
-  box-shadow: 0 2rpx 0 var(--color-block-orange-dark);
+  transform: translateY(4rpx);
+  box-shadow: 0 8rpx 16rpx rgba(255, 171, 145, 0.15);
 }
 
 .submit-text {
-  font-size: 28rpx;
+  font-size: 30rpx;
   color: white;
-  font-weight: bold;
+  font-weight: 600;
 }
 
-/* 温馨提示 */
+/* 提示 */
 .tips-section {
   margin-top: 80rpx;
-  padding: 30rpx;
-  background: rgba(0, 0, 0, 0.02);
-  border-radius: var(--radius-geometric);
+  padding: 40rpx;
+  background: rgba(var(--color-warm-orange-rgb), 0.05);
+  border-radius: var(--radius-zen);
 }
 
 .tip-item {
-  font-size: 22rpx;
-  color: var(--color-text-secondary);
+  font-size: 24rpx;
+  color: var(--text-secondary);
   display: block;
-  margin-bottom: 10rpx;
+  margin-bottom: 12rpx;
   text-align: center;
 }

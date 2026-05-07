@@ -3,23 +3,22 @@
   width: 100%;
   min-height: 100vh;
   background: linear-gradient(to bottom, var(--bg-sky-day-1) 0%, var(--color-paper) 40%);
-  padding: 60rpx 40rpx;
+  padding: 80rpx 40rpx;
 }
 
-/* 进度区：硬阴影色块风格 */
+/* 进度区 */
 .progress-section {
   background: white;
-  border-radius: var(--radius-geometric);
-  padding: 50rpx;
-  margin-bottom: 60rpx;
-  box-shadow: var(--shadow-hard);
+  border-radius: var(--radius-zen);
+  padding: 60rpx 50rpx;
+  margin-bottom: 80rpx;
+  box-shadow: var(--shadow-elevated);
   text-align: left;
-  border: 4rpx solid var(--color-block-green);
 }
 
 .progress-title {
-  font-size: 24rpx;
-  color: var(--color-text-secondary);
+  font-size: 26rpx;
+  color: var(--text-secondary);
   text-transform: uppercase;
   letter-spacing: 4rpx;
   display: block;
@@ -30,13 +29,13 @@
   display: flex;
   align-items: center;
   gap: 30rpx;
-  margin-bottom: 20rpx;
+  margin-bottom: 24rpx;
 }
 
 .progress-number {
-  font-size: 64rpx;
-  font-weight: 800;
-  color: var(--color-block-green-dark);
+  font-size: 72rpx;
+  font-weight: 600;
+  color: var(--color-mint-dark);
 }
 
 progress {
@@ -46,22 +45,21 @@ progress {
 }
 
 .progress-tip {
-  font-size: 22rpx;
-  color: var(--color-text-secondary);
+  font-size: 24rpx;
+  color: var(--text-secondary);
   font-style: italic;
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
-/* 分区标题：契合几何感 */
+/* 分区标题 */
 .section-header {
-  margin-bottom: 40rpx;
-  padding-left: 10rpx;
+  margin-bottom: 50rpx;
 }
 
 .section-title {
-  font-size: 32rpx;
+  font-size: 38rpx;
   font-weight: 600;
-  color: var(--color-text-main);
+  color: var(--text-main);
   position: relative;
 }
 
@@ -69,60 +67,58 @@ progress {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -10rpx;
-  width: 40rpx;
-  height: 6rpx;
-  background: var(--color-block-orange);
+  bottom: -12rpx;
+  width: 50rpx;
+  height: 10rpx;
+  background: var(--color-warm-orange);
+  border-radius: 5rpx;
 }
 
-/* 鸟类网格：非对称错落感的尝试（虽然 grid 很规整） */
+/* 鸟类网格 */
 .birds-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 30rpx;
-  margin-bottom: 60rpx;
+  gap: 32rpx;
+  margin-bottom: 80rpx;
 }
 
-/* 鸟类卡片：几何拼贴+硬阴影 */
+/* 鸟类卡片 */
 .bird-card {
   background: white;
-  border-radius: var(--radius-geometric);
-  padding: 40rpx 30rpx;
-  box-shadow: var(--shadow-hard);
+  border-radius: var(--radius-zen);
+  padding: 48rpx 32rpx;
+  box-shadow: var(--shadow-soft);
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: all 0.1s ease;
-  border: 2rpx solid rgba(0,0,0,0.02);
+  transition: all 0.3s ease;
 }
 
 .bird-card.unlocked:active {
-  transform: translateY(6rpx);
-  box-shadow: var(--shadow-hard-active);
+  transform: scale(0.97);
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.03);
 }
 
 .bird-card-image {
-  width: 180rpx;
-  height: 180rpx;
-  margin-bottom: 30rpx;
-  /* 模拟图片渲染清晰度 */
-  image-rendering: pixelated;
+  width: 200rpx;
+  height: 200rpx;
+  margin-bottom: 32rpx;
 }
 
 .bird-card-silhouette {
-  width: 180rpx;
-  height: 180rpx;
+  width: 200rpx;
+  height: 200rpx;
   background: #F0F0F0;
-  border-radius: var(--radius-geometric);
+  border-radius: var(--radius-zen);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 30rpx;
+  margin-bottom: 32rpx;
 }
 
 .lock-icon {
-  font-size: 50rpx;
-  opacity: 0.2;
+  font-size: 56rpx;
+  opacity: 0.15;
 }
 
 .bird-card-info {
@@ -131,84 +127,70 @@ progress {
 }
 
 .bird-card-name {
-  font-size: 30rpx;
-  font-weight: bold;
-  color: var(--color-text-main);
-  margin-bottom: 8rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 12rpx;
   display: block;
 }
 
 .bird-card-name.locked-name {
-  color: var(--color-text-secondary);
-  opacity: 0.5;
+  color: var(--text-secondary);
+  opacity: 0.4;
 }
 
 .bird-card-emotion {
-  font-size: 22rpx;
-  color: var(--color-block-orange-dark);
-  background: rgba(255, 171, 145, 0.1);
-  padding: 4rpx 16rpx;
-  border-radius: 20rpx;
+  font-size: 24rpx;
+  color: var(--color-blue-dark);
+  background: rgba(135, 169, 190, 0.1);
+  padding: 6rpx 20rpx;
+  border-radius: 100rpx;
   display: inline-block;
-  margin-bottom: 16rpx;
+  margin-bottom: 20rpx;
 }
 
 .bird-card-knowledge {
-  font-size: 20rpx;
-  color: var(--color-text-secondary);
-  line-height: 1.5;
+  font-size: 22rpx;
+  color: var(--text-secondary);
+  line-height: 1.6;
   text-align: left;
   background: var(--color-paper);
-  padding: 16rpx;
-  border-radius: 8rpx;
+  padding: 20rpx;
+  border-radius: 16rpx;
   display: block;
 }
 
-.bird-card-count {
-  font-size: 18rpx;
-  color: var(--color-block-green-dark);
-  margin-top: 16rpx;
-  display: block;
-  font-weight: bold;
-}
-
-.bird-card-hint {
-  font-size: 20rpx;
-  color: var(--color-text-secondary);
-  opacity: 0.5;
-}
-
-/* 未解锁卡片：低对比度 */
+/* 未解锁卡片 */
 .bird-card.locked {
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.4);
   box-shadow: none;
-  border: 2rpx dashed #E0E0E0;
+  opacity: 0.7;
 }
 
-/* 完成状态：金牌色块 */
+/* 完成状态 */
 .complete-card {
-  background: var(--color-block-orange);
-  border-radius: var(--radius-geometric);
-  padding: 60rpx;
+  background: var(--color-warm-orange);
+  border-radius: var(--radius-zen);
+  padding: 80rpx 60rpx;
   text-align: center;
-  box-shadow: 0 12rpx 0 var(--color-block-orange-dark);
+  box-shadow: var(--shadow-accent);
   color: white;
 }
 
 .complete-icon {
-  font-size: 80rpx;
+  font-size: 100rpx;
   display: block;
-  margin-bottom: 20rpx;
+  margin-bottom: 24rpx;
 }
 
 .complete-title {
-  font-size: 40rpx;
-  font-weight: 800;
+  font-size: 48rpx;
+  font-weight: 700;
   display: block;
-  margin-bottom: 10rpx;
+  margin-bottom: 12rpx;
 }
 
 .complete-desc {
-  font-size: 26rpx;
+  font-size: 28rpx;
   opacity: 0.9;
 }

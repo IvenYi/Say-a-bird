@@ -3,37 +3,25 @@
   width: 100%;
   min-height: 100vh;
   background: linear-gradient(to bottom, var(--bg-sky-day-1) 0%, var(--color-paper) 40%);
-  padding: 60rpx 40rpx;
+  padding: 80rpx 40rpx;
 }
 
-/* 噪点层依然需要 */
-.noise-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 10;
-  pointer-events: none;
-  opacity: 0.03;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-}
-
-/* 鸟类展示区：色块艺术展示 */
+/* 鸟类展示区 */
 .bird-section {
   background: white;
-  border-radius: var(--radius-geometric);
+  border-radius: var(--radius-zen);
   padding: 60rpx 40rpx;
   margin-bottom: 40rpx;
-  box-shadow: var(--shadow-hard);
+  box-shadow: var(--shadow-elevated);
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 4rpx solid rgba(0,0,0,0.02);
 }
 
 .bird-image {
-  width: 320rpx;
-  height: 320rpx;
+  width: 340rpx;
+  height: 340rpx;
   margin-bottom: 40rpx;
-  image-rendering: pixelated; /* 强化像素/几何块感 */
 }
 
 .bird-info {
@@ -42,57 +30,56 @@
 }
 
 .bird-name {
-  font-size: 48rpx;
-  font-weight: 800;
-  color: var(--color-text-main);
+  font-size: 52rpx;
+  font-weight: 600;
+  color: var(--text-main);
   letter-spacing: 2rpx;
   display: block;
   margin-bottom: 16rpx;
 }
 
 .bird-emotion {
-  font-size: 24rpx;
-  color: var(--color-block-orange-dark);
-  background: rgba(255, 171, 145, 0.1);
-  padding: 6rpx 20rpx;
-  border-radius: 30rpx;
+  font-size: 26rpx;
+  color: var(--color-blue-dark);
+  background: rgba(135, 169, 190, 0.1);
+  padding: 8rpx 24rpx;
+  border-radius: 100rpx;
   display: inline-block;
-  margin-bottom: 30rpx;
+  margin-bottom: 32rpx;
 }
 
 .bird-knowledge {
-  font-size: 24rpx;
-  color: var(--color-text-secondary);
+  font-size: 26rpx;
+  color: var(--text-secondary);
   background: var(--color-paper);
-  padding: 24rpx;
-  border-radius: 12rpx;
-  line-height: 1.6;
+  padding: 32rpx;
+  border-radius: 20rpx;
+  line-height: 1.7;
   text-align: left;
   font-style: italic;
 }
 
-/* 日记内容区：纸张书写感 */
+/* 日记内容区 */
 .diary-section {
   background: white;
-  border-radius: var(--radius-geometric);
-  padding: 50rpx 40rpx;
+  border-radius: var(--radius-zen);
+  padding: 60rpx 40rpx;
   margin-bottom: 40rpx;
-  box-shadow: var(--shadow-hard);
+  box-shadow: var(--shadow-elevated);
 }
 
 .diary-header {
-  margin-bottom: 40rpx;
-  padding-bottom: 30rpx;
-  border-bottom: 4rpx dashed var(--color-paper);
+  margin-bottom: 48rpx;
+  padding-bottom: 32rpx;
 }
 
 .diary-time {
-  font-size: 22rpx;
-  color: var(--color-text-secondary);
+  font-size: 24rpx;
+  color: var(--text-secondary);
   text-transform: uppercase;
   letter-spacing: 2rpx;
   display: block;
-  margin-bottom: 20rpx;
+  margin-bottom: 24rpx;
 }
 
 .diary-tags {
@@ -102,11 +89,11 @@
 }
 
 .tag-item {
-  font-size: 22rpx;
-  color: var(--color-block-green-dark);
+  font-size: 24rpx;
+  color: var(--color-mint-dark);
   background: rgba(168, 213, 186, 0.1);
-  padding: 6rpx 20rpx;
-  border-radius: 8rpx;
+  padding: 8rpx 24rpx;
+  border-radius: 100rpx;
 }
 
 .diary-content {
@@ -114,60 +101,61 @@
 }
 
 .content-text {
-  font-size: 34rpx;
-  color: var(--color-text-main);
+  font-size: 36rpx;
+  color: var(--text-main);
 }
 
-/* 元数据区：色块拼贴式统计 */
+/* 元数据区 */
 .meta-section {
   display: flex;
-  gap: 20rpx;
+  gap: 24rpx;
   margin-bottom: 40rpx;
 }
 
 .meta-item {
   flex: 1;
   background: white;
-  border-radius: var(--radius-geometric);
-  padding: 30rpx 20rpx;
-  box-shadow: var(--shadow-hard);
+  border-radius: var(--radius-zen);
+  padding: 32rpx 24rpx;
+  box-shadow: var(--shadow-soft);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10rpx;
+  gap: 12rpx;
 }
 
 .meta-label {
-  font-size: 18rpx;
-  color: var(--color-text-secondary);
+  font-size: 20rpx;
+  color: var(--text-secondary);
   text-transform: uppercase;
   letter-spacing: 2rpx;
 }
 
 .meta-value {
-  font-size: 26rpx;
-  color: var(--color-text-main);
-  font-weight: bold;
+  font-size: 28rpx;
+  color: var(--text-main);
+  font-weight: 600;
 }
 
 /* 底部操作 */
 .bottom-actions {
-  margin-top: 40rpx;
+  margin-top: 60rpx;
 }
 
 .delete-btn {
   background: transparent;
-  border: 2rpx solid #FFCDD2;
   color: #EF5350;
-  border-radius: var(--radius-geometric);
-  height: 90rpx;
-  font-size: 24rpx;
+  border-radius: var(--radius-zen);
+  height: 100rpx;
+  font-size: 26rpx;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10rpx;
+  gap: 12rpx;
+  opacity: 0.6;
 }
 
-.delete-btn::after {
-  border: none;
+.delete-btn:active {
+  opacity: 1;
+  background: rgba(239, 83, 80, 0.05);
 }

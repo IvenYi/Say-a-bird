@@ -12,12 +12,7 @@
 .sky-dusk { background: linear-gradient(to bottom, var(--bg-sky-dusk-1), var(--bg-sky-dusk-2)); }
 .sky-night { background: linear-gradient(to bottom, var(--bg-sky-night-1), var(--bg-sky-night-2)); }
 
-.status-bar-placeholder {
-  height: 120rpx; /* 适配异形屏状态栏 */
-  width: 100%;
-}
-
-/* 核心画布区域：完全全屏 */
+/* 核心画布区域：全屏沉浸 */
 .sky-canvas-wrapper {
   width: 100vw;
   height: 100vh;
@@ -29,23 +24,22 @@
 
 /* 2D 无限长卷容器 */
 .infinite-canvas {
-  width: 300vw; /* 横向3倍宽 */
-  height: 250vh; /* 纵向2.5倍高 */
+  width: 300vw;
+  height: 250vh;
   position: relative;
-  /* 背景渐变由父容器处理，这里保持透明 */
 }
 
 /* =========================================
-   三栖生态基底 (Geometric Eco-Base)
+   三栖生态基底 (Stroke-less Geometric Eco-Base)
 ========================================= */
 .eco-base {
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 300vw; /* 撑满横向长卷 */
-  height: 80vh; /* 底部生态区高度 */
+  width: 300vw;
+  height: 80vh;
   pointer-events: none;
-  z-index: 1; /* 在鸟类之下 */
+  z-index: 1;
   overflow: hidden;
 }
 
@@ -54,8 +48,8 @@
   position: absolute;
   bottom: 10vh;
   border-radius: 50% 50% 0 0;
-  background: var(--color-block-green);
-  opacity: 0.15; /* 随天空自动融合 */
+  background: var(--color-mint);
+  opacity: 0.15;
 }
 .eco-hill-left {
   width: 120vw;
@@ -67,23 +61,23 @@
   height: 25vh;
   left: 80vw;
   bottom: 15vh;
-  background: var(--color-forest);
+  background: var(--color-mint-dark);
   opacity: 0.1;
 }
 
-/* 2. 前景：蜿蜒水域与错落滩涂 (Winding River) */
+/* 2. 前景：水域与滩涂 (Winding River) */
 .eco-winding-river {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 300vw;
   height: 25vh;
-  z-index: 10; /* 确保在最前面 */
+  z-index: 10;
 }
 
 .mudflat-curve {
   position: absolute;
-  background: var(--color-forest);
+  background: var(--color-mint-dark);
   opacity: 0.35;
   border-radius: 50%;
 }
@@ -93,15 +87,15 @@
 
 .water-curve {
   position: absolute;
-  background: linear-gradient(to bottom, rgba(168, 213, 186, 0.4), rgba(74, 103, 65, 0.9));
+  background: linear-gradient(to bottom, rgba(168, 213, 186, 0.4), rgba(74, 103, 65, 0.8));
   backdrop-filter: blur(4px);
   border-radius: 50%;
-  border-top: 2rpx solid rgba(255,255,255,0.2);
+  /* V2: 移除所有描边线 */
 }
 .water-1 { width: 180vw; height: 40vh; bottom: -20vh; left: -20vw; }
 .water-2 { width: 200vw; height: 30vh; bottom: -10vh; left: 120vw; }
 
-/* 3. 左侧：几何层叠森林 (Layered Geometric Forest) */
+/* 3. 层叠几何森林 (Layered Geometric Forest) */
 .eco-forest {
   position: absolute;
   bottom: 12vh;
@@ -110,7 +104,6 @@
   height: 40vh;
 }
 
-/* 几何松树 (多层三角形) */
 .tree-pine {
   position: absolute;
   bottom: 0;
@@ -121,7 +114,7 @@
   align-items: center;
   justify-content: flex-end;
 }
-.tree-pine::before { /* 树干 */
+.tree-pine::before {
   content: "";
   position: absolute;
   bottom: 0;
@@ -136,24 +129,22 @@
   height: 0;
   border-left: 8vw solid transparent;
   border-right: 8vw solid transparent;
-  border-bottom: 12vh solid var(--color-forest);
-  margin-bottom: -6vh; /* 层叠覆盖 */
+  border-bottom: 12vh solid var(--color-mint-dark);
+  margin-bottom: -6vh;
   position: relative;
   z-index: 2;
   opacity: 0.9;
 }
 .pine-layer:nth-child(1) { border-bottom-width: 10vh; border-left-width: 6vw; border-right-width: 6vw; z-index: 4; }
 .pine-layer:nth-child(2) { border-bottom-width: 12vh; border-left-width: 7vw; border-right-width: 7vw; z-index: 3; }
-.pine-layer:nth-child(3) { border-bottom-width: 14vh; z-index: 2; }
 
-/* 几何圆冠树 (多层圆形) */
 .tree-round {
   position: absolute;
   bottom: 0;
   width: 24vw;
   height: 24vw;
 }
-.tree-round::after { /* 树干 */
+.tree-round::after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -167,52 +158,47 @@
 }
 .round-layer {
   position: absolute;
-  background: var(--color-block-green);
+  background: var(--color-mint);
   border-radius: 50%;
   z-index: 2;
-  box-shadow: inset -2vw -2vw 0 rgba(0,0,0,0.1);
+  box-shadow: inset -2vw -2vw 0 rgba(0,0,0,0.05);
 }
 .round-layer:nth-child(1) { width: 14vw; height: 14vw; top: 0; left: 5vw; z-index: 4; }
-.round-layer:nth-child(2) { width: 12vw; height: 12vw; top: 6vw; left: 0; background: var(--color-block-green-dark); z-index: 3; }
+.round-layer:nth-child(2) { width: 12vw; height: 12vw; top: 6vw; left: 0; background: var(--color-mint-dark); z-index: 3; }
 .round-layer:nth-child(3) { width: 16vw; height: 16vw; top: 4vw; right: 0; z-index: 3; }
-
-/* 树木错落分布 */
-.tree-1 { left: 0; transform: scale(1.1); z-index: 1; }
-.tree-2 { left: 20vw; transform: scale(1.3); z-index: 3; }
-.tree-3 { left: 50vw; transform: scale(0.8); z-index: 0; opacity: 0.8; }
 
 
 /* =========================================
-   UI 与视差特效层 (Camera Lens & God Rays)
+   UI 与特效层
 ========================================= */
 
-/* 固定前景画框 */
+/* 固定前景画框 (Camera Lens) */
 .framing-layer {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
   pointer-events: none;
-  z-index: 100; /* 高于 scroll-view，低于 UI */
+  z-index: 100;
 }
 .framing-leaf {
   position: absolute;
   top: -10vh;
   width: 40vw;
   height: 60vh;
-  background: var(--color-block-green-dark);
+  background: var(--color-mint-dark);
   border-radius: 50%;
-  filter: blur(8px); /* 镜头外的失焦感 */
-  opacity: 0.8;
-  mix-blend-mode: multiply; /* 融入天空背景 */
+  filter: blur(20px); /* 增加模糊度营造失焦感 */
+  opacity: 0.6;
+  mix-blend-mode: multiply;
 }
 .framing-left { left: -20vw; transform: rotate(15deg); }
 .framing-right { right: -25vw; top: -5vh; transform: rotate(-20deg) scale(1.2); }
 
-/* 神明光 (丁达尔效应) */
+/* 神明光 */
 .god-rays-layer {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
   pointer-events: none;
-  z-index: 50; /* 在背景之上，树木之下或交织 */
+  z-index: 50;
   overflow: hidden;
 }
 .ray {
@@ -220,22 +206,15 @@
   top: -20vh;
   width: 15vw;
   height: 150vh;
-  background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
+  background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
   transform-origin: top center;
   mix-blend-mode: overlay;
-  filter: blur(10px);
+  filter: blur(15px);
 }
 .ray-1 { left: 30vw; transform: rotate(25deg); }
-.ray-2 { left: 60vw; transform: rotate(30deg); width: 25vw; opacity: 0.6; }
+.ray-2 { left: 60vw; transform: rotate(30deg); width: 25vw; opacity: 0.5; }
 
-/* 鸟类容器 */
-.birds-container {
-  width: 300vw;
-  height: 250vh;
-  position: relative;
-}
-
-/* 鸟类项：悬浮在画布的绝对位置 */
+/* 鸟类项 */
 .bird-item {
   position: absolute;
   width: 160rpx;
@@ -243,105 +222,87 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /* 去掉 Entrance 动画，因为现在是绝对定位，可能不在视野内 */
   animation: birdFloatZen 6s ease-in-out infinite;
 }
 
 .bird-emoji {
   font-size: 100rpx;
+  filter: drop-shadow(0 10rpx 20rpx rgba(0,0,0,0.1));
 }
 
-/* 极简解锁提示点 */
+/* 解锁提示点 */
 .unlock-dot {
   position: absolute;
   top: 30rpx;
   right: 30rpx;
   width: 12rpx;
   height: 12rpx;
-  background: var(--color-block-orange);
+  background: var(--color-warm-orange);
   border-radius: 50%;
-  box-shadow: 0 0 10rpx var(--color-block-orange);
+  box-shadow: 0 0 10rpx var(--color-warm-orange);
 }
 
-/* 沉浸式导航组：底部悬浮 */
+/* 沉浸式导航组 */
 .zen-navigation {
   position: fixed;
-  bottom: 80rpx;
+  bottom: calc(80rpx + env(safe-area-inset-bottom));
   left: 0;
   right: 0;
   display: flex;
-  align-items: flex-end; /* 底部对齐 */
+  align-items: flex-end;
   justify-content: space-around;
   padding: 0 40rpx;
   z-index: 1000;
 }
 
-/* 核心交互区包装器 */
-.main-action-wrapper {
+/* 核心交互按钮 */
+.zen-main-action {
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
+  gap: 24rpx;
 }
 
-/* 隐藏的文字输入入口 */
-.sub-action-btn {
-  position: absolute;
-  top: -50rpx;
-  right: -30rpx;
-  width: 60rpx;
-  height: 60rpx;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10rpx);
+.action-circle {
+  width: 160rpx;
+  height: 160rpx;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(20px);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0.6;
-  transition: all 0.3s ease;
-  z-index: 10;
+  box-shadow: var(--shadow-soft);
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.sub-action-btn:active {
+.zen-main-action:active .action-circle {
   transform: scale(0.9);
-  opacity: 1;
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.4);
 }
 
-.sub-action-icon {
-  font-size: 28rpx;
+.action-bird {
+  font-size: 72rpx;
 }
 
-/* 长按放空提示 */
-.long-press-hint {
-  position: absolute;
-  bottom: -40rpx;
-  font-size: 20rpx;
-  color: var(--color-text-main);
-  opacity: 0.3;
-  letter-spacing: 2rpx;
-  animation: breatheHint 4s ease-in-out infinite;
-  white-space: nowrap;
+.action-label {
+  font-size: 24rpx;
+  color: var(--text-main);
+  font-weight: 400;
+  letter-spacing: 4rpx;
+  opacity: 0.7;
 }
 
-@keyframes breatheHint {
-  0%, 100% { opacity: 0.15; }
-  50% { opacity: 0.4; }
-}
-
-/* 文字输入遮罩层 */
+/* 文字输入遮罩 (Glassmorphism) */
 .text-input-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(245, 245, 245, 0.85); /* 纸张白带透明度 */
-  backdrop-filter: blur(40rpx); /* 强毛玻璃效果 */
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(245, 245, 245, 0.88);
+  backdrop-filter: blur(40px);
   z-index: 2000;
   display: flex;
   flex-direction: column;
-  padding: 120rpx 60rpx 60rpx;
+  padding: calc(120rpx + env(safe-area-inset-top)) 60rpx 60rpx;
 }
 
 .input-header {
@@ -353,185 +314,34 @@
 
 .cancel-text {
   font-size: 32rpx;
-  color: var(--color-text-secondary);
+  color: var(--text-secondary);
   padding: 20rpx 0;
 }
 
 .send-btn {
   margin: 0;
-  padding: 0 40rpx;
-  height: 64rpx;
-  line-height: 64rpx;
-  background: var(--color-block-orange);
+  padding: 0 50rpx;
+  height: 72rpx;
+  line-height: 72rpx;
+  background: var(--color-warm-orange);
   color: white;
-  font-size: 28rpx;
-  font-weight: bold;
-  border-radius: 32rpx;
-  box-shadow: var(--shadow-hard);
-}
-
-.send-btn[disabled] {
-  background: #E0E0E0;
-  color: #9E9E9E;
-  box-shadow: none;
+  font-size: 30rpx;
+  font-weight: 500;
+  border-radius: 36rpx;
+  box-shadow: var(--shadow-accent);
 }
 
 .zen-textarea {
   width: 100%;
   flex: 1;
   background: transparent;
-  font-size: 40rpx;
+  font-size: 42rpx;
   line-height: 1.8;
-  color: var(--color-text-main);
-  font-weight: 300;
+  color: var(--text-main);
   letter-spacing: 2rpx;
 }
 
-.zen-placeholder {
-  color: var(--color-text-secondary);
-  opacity: 0.4;
-  font-style: italic;
-}
-
-/* 侧边小图标 */
-.nav-icon-box {
-  width: 100rpx;
-  height: 100rpx;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0.3; /* 极低不透明度，仅在视觉余光中存在 */
-  transition: opacity 0.3s ease;
-}
-
-.nav-icon-box:active {
-  opacity: 0.8;
-}
-
-.nav-icon {
-  font-size: 44rpx;
-}
-
-/* 核心交互按钮：参考 Scribe/交互灵感 */
-.zen-main-action {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20rpx;
-}
-
-.action-circle {
-  width: 150rpx;
-  height: 150rpx;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(20rpx);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 0 1rpx rgba(255, 255, 255, 0.1);
-  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.zen-main-action:active .action-circle {
-  transform: scale(0.9);
-  background: rgba(255, 255, 255, 0.4);
-}
-
-.action-bird {
-  font-size: 70rpx;
-}
-
-.action-label {
-  font-size: 24rpx;
-  color: var(--color-text-main);
-  font-weight: 300;
-  letter-spacing: 4rpx;
-  opacity: 0.6;
-}
-
-/* 视图切换：极其隐秘 */
-.view-switch-zen {
-  position: fixed;
-  top: 140rpx;
-  right: 40rpx;
-  display: flex;
-  align-items: center;
-  gap: 12rpx;
-  padding: 10rpx 20rpx;
-  opacity: 0.2;
-  transition: opacity 0.3s ease;
-}
-
-.view-switch-zen:active {
-  opacity: 0.8;
-}
-
-.switch-dot {
-  width: 8rpx;
-  height: 8rpx;
-  background: var(--color-text-main);
-  border-radius: 50%;
-}
-
-.switch-label {
-  font-size: 20rpx;
-  color: var(--color-text-main);
-}
-
-/* 诗意化空状态 */
-.empty-state {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  width: 80%;
-}
-
-.empty-quote {
-  font-size: 32rpx;
-  color: var(--color-text-main);
-  opacity: 0.4;
-  display: block;
-  margin-bottom: 20rpx;
-  font-style: italic;
-  letter-spacing: 2rpx;
-}
-
-.empty-hint {
-  font-size: 22rpx;
-  color: var(--color-text-secondary);
-  opacity: 0.3;
-}
-
-/* 动效定义 */
-@keyframes birdEntranceZen {
-  from {
-    opacity: 0;
-    filter: blur(20rpx);
-    transform: scale(0.8) translateY(100rpx);
-  }
-  to {
-    opacity: 1;
-    filter: blur(0);
-    transform: scale(1) translateY(0);
-  }
-}
-
-@keyframes birdFloatZen {
-  0%, 100% {
-    transform: translate(0, 0) rotate(0deg);
-  }
-  33% {
-    transform: translate(10rpx, -20rpx) rotate(3deg);
-  }
-  66% {
-    transform: translate(-10rpx, -10rpx) rotate(-2deg);
-  }
-}
-
-/* 录音交互相关样式 */
+/* 录音声波层 */
 .recording-overlay {
   position: absolute;
   top: 40%;
@@ -541,16 +351,14 @@
   flex-direction: column;
   align-items: center;
   z-index: 500;
-  animation: fadeInZen 0.5s ease;
 }
 
 .recording-title {
   font-size: 36rpx;
-  color: var(--color-text-main);
+  color: var(--text-main);
   font-weight: 500;
   letter-spacing: 4rpx;
   margin-bottom: 60rpx;
-  opacity: 0.9;
   font-style: italic;
 }
 
@@ -559,65 +367,42 @@
   align-items: center;
   gap: 12rpx;
   height: 80rpx;
-  margin-bottom: 30rpx;
+  margin-bottom: 40rpx;
 }
 
 .wave-bar {
   width: 6rpx;
-  background: var(--color-text-main);
+  background: var(--color-warm-orange);
   border-radius: 6rpx;
   animation: wavePulseZen 1.2s ease-in-out infinite;
-  opacity: 0.8;
 }
 
-.wave-bar:nth-child(1) { height: 30rpx; animation-delay: 0.0s; }
-.wave-bar:nth-child(2) { height: 60rpx; animation-delay: 0.2s; }
-.wave-bar:nth-child(3) { height: 80rpx; animation-delay: 0.4s; }
-.wave-bar:nth-child(4) { height: 60rpx; animation-delay: 0.6s; }
-.wave-bar:nth-child(5) { height: 30rpx; animation-delay: 0.8s; }
-
-.recording-hint {
-  font-size: 24rpx;
-  color: var(--color-text-main);
-  letter-spacing: 12rpx;
-  font-weight: 300;
-  opacity: 0.5;
+/* 视图切换 */
+.view-switch-zen {
+  position: fixed;
+  top: calc(140rpx + env(safe-area-inset-top));
+  right: 40rpx;
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  padding: 12rpx 24rpx;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 100rpx;
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
 }
 
-/* 录音中的底部按钮变化 */
-.zen-main-action.recording .action-circle {
-  transform: scale(1.1);
-  background: rgba(255, 255, 255, 0.6);
-  box-shadow: 0 0 30rpx rgba(255, 255, 255, 0.5);
-  animation: pulseGlow 2s infinite;
-}
+.view-switch-zen:active { opacity: 0.9; }
 
-.zen-main-action.recording .action-label {
-  color: var(--color-block-orange);
-  opacity: 1;
-  font-weight: bold;
-}
-
-.stop-square {
-  width: 40rpx;
-  height: 40rpx;
-  background: var(--color-block-orange);
-  border-radius: 8rpx;
-}
-
-/* 录音相关动效 */
-@keyframes fadeInZen {
-  from { opacity: 0; transform: translate(-50%, -40%); }
-  to { opacity: 1; transform: translate(-50%, -50%); }
+/* 动画定义 */
+@keyframes birdFloatZen {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(10rpx, -20rpx) rotate(3deg); }
+  66% { transform: translate(-10rpx, -10rpx) rotate(-2deg); }
 }
 
 @keyframes wavePulseZen {
   0%, 100% { transform: scaleY(0.4); opacity: 0.4; }
   50% { transform: scaleY(1); opacity: 1; }
-}
-
-@keyframes pulseGlow {
-  0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
-  70% { box-shadow: 0 0 0 30rpx rgba(255, 255, 255, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
 }
